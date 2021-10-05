@@ -1,0 +1,260 @@
+﻿@using Microsoft.Extensions.Configuration
+@using GSK.HealthProfessional.WebApp.Helper
+@using GSK.HealthProfessional.Service
+@inject IConfiguration Configuration
+@model GSK.HealthProfessional.Model.HealthProfessionalModel
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .pdfobject-container {
+        height: 30rem;
+        border: 1rem solid rgba(0,0,0,.1);
+    }
+
+    .g-recaptcha {
+        margin-top: 15px;
+    }
+
+    .field-validation-error {
+        color: orangered;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col s12">
+
+        @if (ViewBag.ClienteExternoMessage != null)
+        {
+            <div class="materialert success">
+                <div class="material-icons">check</div>
+                <div class="row">
+                    <br />
+                    <div class=" col s12">
+                        @ViewBag.ClienteExternoMessage
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.setTimeout(function () {
+                    window.location.href = "Index";
+                }, 9000);
+            </script>
+        }
+
+        @if (ViewBag.Url != null)
+        {
+            <div class="materialert success">
+                <div class="material-icons">check</div>
+                <div class="row">
+                    <div class=" col s12">
+                        Cadastro realizado com sucesso
+                    </div>
+                    <br />
+                    <div class=" col s12">
+                        Você será redirecionado para <a>@ViewBag.Url</a>...
+                    </div>
+                </div>
+            </div>
+            <script>
+            window.setTimeout(function () {
+            window.location.href = '@ViewBag.Url';
+            }, 5000);
+            </script>
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="materialert field-validation-error">
+                <div class="material-icons">check</div>
+                <div class="row">
+                    <br />
+                    <div class=" col s12" style="font-size: 14px">
+                        <a href="https://contiacademy-account.neolude.com.br/"> @ViewBag.Error</a>...
+                    </div>
+                </div>
+            </div>
+        }
+
+    <form asp-action="Create" id="CreateUser">
+        <div class="row helper-text text-danger" style="margin-top:15px">
+            <div class="col s12 m12">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <ul>
+                        @foreach (var modelState in ViewData.ModelState.Values)
+                        {
+                            foreach (var error in modelState.Errors)
+                            {
+                                <li class="text-danger field-validation-error">@error.ErrorMessage</li>
+                            }
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="row">
+            <div class=" col s12 m10 l6">
+                <div class="input-field">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="helper-text text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class=" col s12 m10 l6">
+                <div class="input-field">
+                    <label asp-for="Sobrenome" class="control-label"></label>
+                    <input asp-for="Sobrenome" class="form-control" />
+                    <span asp-validation-for="Sobrenome" class="helper-text text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="row">
+            <div class="col s12 m8 l6">
+                <div class="input-field">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="helper-text text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m8 l6">
+                <div class="input-field">
+                    <label asp-for="RedigitarEmail" class="control-label"></label>
+                    <input asp-for="RedigitarEmail" class="form-control" />
+                    <span asp-validation-for="RedigitarEmail" class="helper-text text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="row">
+            <div class="col s12 m6 l4">
+                <div class="input-field">
+                    <input asp-for="Password" class="form-control" />
+                    <label asp-for="Password" class="control-label"></label>
+                    <span asp-validation-for="Password" class="helper-text text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l4">
+                <div class="input-field ">
+                    <input asp-for="PasswordConfirmation" class="form-control" />
+                    <label asp-for="PasswordConfirmation" class="control-label"></label>
+                    <span asp-validation-for="PasswordConfirmation" class="helper-text text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <fieldset>
+            <legend style="font-size: 15px; color:gray; font-weight: bold">Tipo de Cliente</legend>
+            <label style="margin-right: 10px; font-size:15px; color :gray; font-weight: bold">Escolha uma opção: </label>
+
+            <input type="radio" asp-for="ClientType" name="ClientType" checked="checked" id="ClienteContinental" value="ClienteContinental">  ClienteContinental
+            <input type="radio" asp-for="ClientType" name="ClientType" id="ClienteExterno" value="ClienteExterno" style="margin-left:10px">  ClienteExterno
+        </fieldset>
+
+
+
+        <div class="row" id="CodigoSAP" style="margin-top:20px">
+            <div class=" col s16 m10 l2">
+                <div class="input-field">
+                    <label asp-for="CodigoSAP" class="control-label"></label>
+                    <input asp-for="CodigoSAP" class="form-control" id="InputCodigo" />
+                    <span asp-validation-for="CodigoSAP" class="helper-text text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label id="nameBU" style="margin-left: 20px; font-size: 14px; color:red"></label>
+        </div>
+        <hr class="divider" />
+
+        <div class="row">
+            <div class="col s12 m12">
+
+                <p>
+                    <input asp-for="Consentimento" />
+                    <label for="Consentimento">@Html.DisplayNameFor(model => model.Consentimento)</label>
+                </p>
+
+                <p>
+                    <input class="form-check-input" data-toggle="modal" asp-for="AcceptsTermUse" />
+                    <label for="AcceptsTermUse">@Html.DisplayNameFor(model => model.AcceptsTermUse)</label>
+                </p>
+
+                <p>
+                    <label class="form-check-label">
+                        @Html.GoogleReCaptcha(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"), "onloadCallback", "expirationCallbackCaptcha")
+                    </label>
+                </p>
+            </div>
+        </div>
+        <div class="form-group input-field">
+            <button type="submit" value="Salvar" id="btnSubmit" disabled="disabled" class="btn waves-effect waves-light btn-large btn-primary">
+                Salvar<i class="material-icons right">send</i>
+            </button>
+        </div>
+        <div class="row helper-text text-danger" style="margin-top:15px">
+            <div class="col s12 m12">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <ul>
+                        @foreach (var modelState in ViewData.ModelState.Values)
+                        {
+                            foreach (var error in modelState.Errors)
+                            {
+                                <li class="text-danger field-validation-error">@error.ErrorMessage</li>
+                            }
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+<div class="modal-content">
+    <div style="height:100%" class="modal-body">
+        <div style="height:100%" id="divPDF"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href="#!" class="modal-action btnReject modal-close waves-effect waves-green btn-flat ">Recusar</a>
+    <a href="#!" class="modal-action btnAccept modal-close waves-effect waves-green btn-flat ">Aceitar</a>
+</div>
+</div>
+
+
+
+
+@section Scripts {
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

@@ -1,0 +1,39 @@
+﻿
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+    <div style="padding-top: 15px;"></div>
+
+    <div class="materialert error">
+        <div class="col s12 m12">
+            <div class="row">
+                <div class="material-icons">error_outline</div>
+                Opa! Algo deu errado :
+            </div>
+            <div class="row">
+                <div style="padding-top: 20px" asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Sucesso))
+{
+    <div style="padding-top: 15px"></div>
+
+    <div id="msg_box" class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h3 id="msgRetorno">@ViewBag.Sucesso</h3>
+    </div>
+}
+
+@if (TempData["Sucesso"] != null)
+{
+    <div style="padding-top: 15px"></div>
+
+    <div id="msg_box" class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 id="msgRetorno">@Html.Raw(TempData["Sucesso"].ToString())</h4>
+    </div>
+}
+

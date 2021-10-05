@@ -1,0 +1,45 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContiAcademy</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/lib/materialize-v0.100.2/materialize/css/materialize.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+  
+    <main role="main" class="main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1> <img height="43" class="logo" width="300" style="margin-bottom: 30px" src="~/Img/CA.png" />
+                    <br />
+                    @Configuration.GetSection("AppSettings:TitleForm").Value</h1>
+                </div>
+                
+            </div>
+            @RenderBody()
+        </div>
+    </main>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-input-mask/jquery.inputmask.js"></script>
+    <script src="~/lib/jquery-input-mask/jquery.mask.js"></script>
+    <script src="~/lib/materialize-v0.100.2/materialize/js/materialize.js"></script>
+    <script src="~/lib/pdfobject.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>PDFObject.embed("/StaticFiles/TermoAceite.pdf", "#divPDF");</script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

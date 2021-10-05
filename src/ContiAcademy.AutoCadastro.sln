@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContiAcademy.AutoCadastro.WebApp", "GSK.HealthProfessional.WebApp\ContiAcademy.AutoCadastro.WebApp.csproj", "{EC0B7304-2DA4-4A13-8627-B61A32C1F8A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContiAcademy.AutoCadastro.Service", "GSK.HealthProfessional.Service\ContiAcademy.AutoCadastro.Service.csproj", "{26661F99-482C-48BD-9F32-97C3794A28A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContiAcademy.AutoCadastro.Model", "GSK.HealthProfessional.Model\ContiAcademy.AutoCadastro.Model.csproj", "{E6E8D722-AA12-4C67-9BC0-C641D8927EF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContiAcademy.AutoCadastro.Data", "GSK.HealthProfessional.Data\ContiAcademy.AutoCadastro.Data.csproj", "{9D7586EB-91EA-4140-A2A3-7C9B5C73B877}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC0B7304-2DA4-4A13-8627-B61A32C1F8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC0B7304-2DA4-4A13-8627-B61A32C1F8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC0B7304-2DA4-4A13-8627-B61A32C1F8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC0B7304-2DA4-4A13-8627-B61A32C1F8A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26661F99-482C-48BD-9F32-97C3794A28A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26661F99-482C-48BD-9F32-97C3794A28A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26661F99-482C-48BD-9F32-97C3794A28A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26661F99-482C-48BD-9F32-97C3794A28A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E8D722-AA12-4C67-9BC0-C641D8927EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E8D722-AA12-4C67-9BC0-C641D8927EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E8D722-AA12-4C67-9BC0-C641D8927EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E8D722-AA12-4C67-9BC0-C641D8927EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D7586EB-91EA-4140-A2A3-7C9B5C73B877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D7586EB-91EA-4140-A2A3-7C9B5C73B877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D7586EB-91EA-4140-A2A3-7C9B5C73B877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D7586EB-91EA-4140-A2A3-7C9B5C73B877}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C6906A4-8CA1-4296-B023-3890645B2D02}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <UserSecretsId>3ff2b1cb-f06b-44d6-9889-eac1a0453e15</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GSK.HealthProfessional.Data\ContiAcademy.AutoCadastro.Data.csproj" />
+    <ProjectReference Include="..\GSK.HealthProfessional.Model\ContiAcademy.AutoCadastro.Model.csproj" />
+  </ItemGroup>
+
+</Project>
