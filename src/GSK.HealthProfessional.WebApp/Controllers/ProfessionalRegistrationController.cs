@@ -63,7 +63,7 @@ namespace GSK.HealthProfessional.WebApp.Controllers
                 }
                 
             }
-
+             
             if (!ModelState.IsValid)
             {
                 return View("Index", professional);
